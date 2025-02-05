@@ -8,7 +8,6 @@ import {
 export const classifyNumber = async (req: Request, res: Response) => {
   try {
     const number = Number(req.query.number);
-
     const properties = classifyNumberProperties(number);
     const is_prime = isPerfect(number);
     const fun_fact = await getFunFact(number);

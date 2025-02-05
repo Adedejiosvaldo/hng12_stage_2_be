@@ -15,14 +15,21 @@ export const validateNumber = (
     if (!queryHeader) {
       res.status(400).json({
         error: true,
+        number: ``,
       });
     }
-    numberSchema.parse(req.query);
+    const result = numberSchema.safeParse(req.query);
+    if (!result.success) {
+      return res.status(400).json({
+        error: true,
+        number: req.query.number,
+      });
+    }
     next();
   } catch (error) {
     res.status(400).json({
-      number: `${req.query.number}`,
       error: true,
+      number: `${req.query.number}`,
     });
   }
 };

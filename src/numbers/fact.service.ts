@@ -19,6 +19,7 @@ export const isArmstrong = (num: number): boolean => {
 };
 
 export const isPerfect = (num: number): boolean => {
+  if (num <= 0) return false;
   let sum = 0;
   for (let i = 1; i < num; i++) {
     if (num % i === 0) sum += i;
@@ -28,9 +29,27 @@ export const isPerfect = (num: number): boolean => {
 
 export const classifyNumberProperties = (num: number) => {
   const properties: string[] = [];
+
+  // Sign property
+  properties.push(num === 0 ? "zero" : num > 0 ? "positive" : "negative");
+
+  // Armstrong property
   if (isArmstrong(num)) properties.push("armstrong");
+
+  // Even/Odd property (zero is considered even)
   if (num % 2 === 0) properties.push("even");
   else properties.push("odd");
+
+  // Perfect number property (only check if positive)
+  if (num > 0 && isPerfect(num)) properties.push("perfect");
+
   return properties;
 };
-    
+
+// export const classifyNumberProperties = (num: number) => {
+//   const properties: string[] = [];
+//   if (isArmstrong(num)) properties.push("armstrong");
+//   if (num % 2 === 0) properties.push("even");
+//   else properties.push("odd");
+//   return properties;
+// };
