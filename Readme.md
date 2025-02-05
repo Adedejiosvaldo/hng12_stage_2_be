@@ -1,4 +1,4 @@
-# HNG12 Stage 1 Backend Task
+# HNG12 Stage 1 Backend Task API
 
 This is a **Number Classification API** that classifies numbers based on certain mathematical properties and returns a fun fact. The API checks if the number is **Armstrong**, **Perfect**, **Odd**, or **Even**. Additionally, it fetches a fun fact from the [Numbers API](http://numbersapi.com/#42) related to the given number.
 
