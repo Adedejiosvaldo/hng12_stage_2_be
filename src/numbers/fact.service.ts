@@ -27,29 +27,24 @@ export const isPerfect = (num: number): boolean => {
   return sum === num;
 };
 
-export const classifyNumberProperties = (num: number) => {
-  const properties: string[] = [];
+export const isPrime = (num: number): boolean => {
+  // Handle special cases
+  if (num <= 1) return false;
+  if (num === 2) return true;
+  if (num % 2 === 0) return false;
 
-  // Sign property
-  properties.push(num === 0 ? "zero" : num > 0 ? "positive" : "negative");
-
-  // Armstrong property
-  if (isArmstrong(num)) properties.push("armstrong");
-
-  // Even/Odd property (zero is considered even)
-  if (num % 2 === 0) properties.push("even");
-  else properties.push("odd");
-
-  // Perfect number property (only check if positive)
-  if (num > 0 && isPerfect(num)) properties.push("perfect");
-
-  return properties;
+  // Check odd divisors up to square root
+  const sqrt = Math.floor(Math.sqrt(num));
+  for (let i = 3; i <= sqrt; i += 2) {
+    if (num % i === 0) return false;
+  }
+  return true;
 };
 
-// export const classifyNumberProperties = (num: number) => {
-//   const properties: string[] = [];
-//   if (isArmstrong(num)) properties.push("armstrong");
-//   if (num % 2 === 0) properties.push("even");
-//   else properties.push("odd");
-//   return properties;
-// };
+export const classifyNumberProperties = (num: number) => {
+  const properties: string[] = [];
+  if (isArmstrong(num)) properties.push("armstrong");
+  if (num % 2 === 0) properties.push("even");
+  else properties.push("odd");
+  return properties;
+};
