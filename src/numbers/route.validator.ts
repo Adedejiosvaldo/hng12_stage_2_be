@@ -14,8 +14,8 @@ export const validateNumber = (
     const queryHeader = req.query.number;
     if (!queryHeader) {
       res.status(400).json({
+         number: "alphabet",
         error: true,
-        message: "query number is needed",
       });
     }
     numberSchema.parse(req.query);
