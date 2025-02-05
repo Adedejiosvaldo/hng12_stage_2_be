@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import errorHandler from "./error/error.service";
 import { AppError } from "./error/error";
+import router from "./numbers/fact.route";
 dotenv.config();
 
 const app: Express = express();
@@ -16,19 +17,10 @@ app.use(express.urlencoded({ limit: "5mb", extended: true }));
 const API_PREFIX = "/api/v1";
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({
-    email: "adedejiosvaldo@gmail.com",
-    current_datetime: new Date().toISOString(),
-    github_url: "https://github.com/Adedejiosvaldo/hng_api_stage0",
-  });
+  res.send("Home");
 });
-app.get("/api/v1/info", (req: Request, res: Response) => {
-  res.status(200).json({
-    email: "adedejiosvaldo@gmail.com",
-    current_datetime: new Date().toISOString(),
-    github_url: "https://github.com/Adedejiosvaldo/hng_api_stage0",
-  });
-});
+
+app.use("/api/classify-number", router);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   let err = new AppError(
