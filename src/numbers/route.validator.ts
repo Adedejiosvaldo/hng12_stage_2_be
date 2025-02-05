@@ -14,7 +14,6 @@ export const validateNumber = (
     const queryHeader = req.query.number;
     if (!queryHeader) {
       res.status(400).json({
-         number: "alphabet",
         error: true,
       });
     }
@@ -22,7 +21,7 @@ export const validateNumber = (
     next();
   } catch (error) {
     res.status(400).json({
-      number: "alphabet",
+      number: `${req.query.number}`,
       error: true,
     });
   }
