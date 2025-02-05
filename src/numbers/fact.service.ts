@@ -41,6 +41,20 @@ export const isPrime = (num: number): boolean => {
   return true;
 };
 
+export const getDigitSum = (num: number): number => {
+  return String(Math.abs(num))
+    .split("")
+    .map(Number)
+    .reduce((a, b) => a + b, 0);
+};
+
+export const getProperties = (num: number): string[] => {
+  const properties: string[] = [];
+  if (isArmstrong(num)) properties.push("armstrong");
+  properties.push(num % 2 === 0 ? "even" : "odd");
+  return properties;
+};
+
 export const classifyNumberProperties = (num: number) => {
   const properties: string[] = [];
   if (isArmstrong(num)) properties.push("armstrong");

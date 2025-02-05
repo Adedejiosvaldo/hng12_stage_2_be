@@ -2,9 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import { z } from "zod";
 
 const numberSchema = z.object({
-  number: z.string().regex(/^\d+$/, "Invalid number format").transform(Number),
+  number: z
+    .string()
+    .regex(/^-?\d+$/, "Invalid number format")
+    .transform(Number),
 });
-
 export const validateNumber = (
   req: Request,
   res: Response,

@@ -4,6 +4,7 @@ import {
   classifyNumberProperties,
   isPerfect,
   isPrime,
+  getDigitSum,
 } from "./fact.service";
 
 export const classifyNumber = async (req: Request, res: Response) => {
@@ -18,11 +19,7 @@ export const classifyNumber = async (req: Request, res: Response) => {
       is_prime,
       is_perfect: isPerfect(number),
       properties,
-      digit_sum: number
-        .toString()
-        .split("")
-        .map(Number)
-        .reduce((sum, digit) => sum + digit, 0),
+      digit_sum: getDigitSum(number),
       fun_fact,
     };
 

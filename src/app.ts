@@ -16,8 +16,8 @@ app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: true }));
 const API_PREFIX = "/api/v1";
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Home");
+app.get("/", (_, res) => {
+  res.json({ status: "ok" });
 });
 
 app.use("/api/classify-number", router);
